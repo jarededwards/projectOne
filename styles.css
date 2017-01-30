@@ -1,1 +1,45 @@
-main{}
+#submission{
+  color:red;
+}
+
+div {
+  border: 2px solid black;
+  height: 100px;
+  width: 100px;
+  margin: 15px;
+  text-align: center;
+
+}
+
+
+main {
+  border: 2px solid black;
+  min-height: 70vh;
+  margin: 10px;
+}
+
+header {
+  margin: 10px;
+  border: 2px solid black;
+}
+
+footer {
+  margin: 10px;
+  border: 2px solid black;
+  text-align: center;
+}
+
+button, input {
+  margin: 10px;
+}
+
+
+.flexContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.flex-items{
+}

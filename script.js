@@ -1,5 +1,36 @@
 $(document).ready(function(){
 
+  //var test = prompt('What word would you like to have your partner guess?');
+  var button = $('button');
+  var input;
+
+  // Event setup using a convenience method
+  button.click(function(e) {
+      // console.log( "You clicked the button!");
+      e.preventDefault();
+      input = $('input').val();
+
+      console.log(input +" Length: "+ input.length);
+      createBoard();
+
+  });
+  //event  to listen for with the enter
+  $('input').keypress(function(e) {
+      if (e.which == 13) {
+          e.preventDefault();
+          $('input').click();
+          input = $('input').val();
+          console.log(input +" Length: "+ input.length);
+          createBoard();
+      }
+  });
+
+  function createBoard(){
+    for(let i =0; i < input.length; i++){
+      $('main').append('<div></div>');
+    }
+  }
+
 
 
 });//end document ready
