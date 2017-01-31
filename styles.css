@@ -46,7 +46,7 @@
   border-radius: 10px;
 }
 
-.aside-1 {
+.aside {
   background: #54856A;
   width: 100px;
   border-radius: 10px;
@@ -85,6 +85,13 @@
   justify-content: center;
   margin: 0 auto;
   padding: 5px;
+}
+
+.buttons{
+display: flex;
+justify-content:center;
+margin: 10px auto;
+
 }
 
 body {

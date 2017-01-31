@@ -8,6 +8,7 @@ $(document).ready(function(){
   var letter;
   var tries = 5;
   var guessedLetters=[];
+  var newButton = $('#button');
 
 
 
@@ -18,7 +19,7 @@ $(document).ready(function(){
     $('.tries').html(tries);
     $('#wordInput').val('');
     $('.flexItems .letterBoxes').remove().children();
-    $('.guessedLetterBox').remove().children();
+    $('.guessedLetterBox').children().remove();
     hideShow();
   }
 
@@ -33,7 +34,23 @@ $(document).ready(function(){
     }else{
           match();
     }
-  }
+  }//end validateLetter
+
+  // function validateWord(){
+  //   var reSpace = /[ ]/;
+  //   var reLetters = /[A-Za-z]/;
+  //   var reTestSpace = reSpace.test(input);
+  //   var reTestLetters = reLetters.test(input);
+  //   console.log('this is space');
+  //   console.log(reTestSpace);
+  //   console.log('this is letters');
+  //   console.log(reTestLetters);
+  //   if(reTestSpace && reTestLetters){
+  //     alert('not allowed to enter more than one word');
+  //     clear();
+  //   }
+  //
+  // }
 
   function hideShow() {
     $('#wordInput').toggleClass('hide');
@@ -43,6 +60,17 @@ $(document).ready(function(){
     $('#letterInput').toggleClass('hide');
     $('#letter').toggleClass('hide');
   }
+
+//listen for clik on button
+  newButton.click(function(e){
+    e.preventDefault();
+    input = $('#button.word').val().toUpperCase();
+    //validateWord
+    $('#button.word').attr('id','button.letter')
+
+
+
+  });
 
   //click listener for the reset button
   reset.click(function(e){
@@ -57,6 +85,7 @@ $(document).ready(function(){
   button.click(function(e) {
       e.preventDefault();
       input = $('#wordInput').val().toUpperCase();
+      // validateWord();
       createBoard();
       hideShow();
   });
@@ -120,11 +149,6 @@ create display box with remaining guesses
 then worry about hang man picture
 
 Remove the separate input field and make it the same as with updated text -- create a reset function
-
-*****
-
-
-
 */
 
 /*/event  to listen for with the enter
@@ -138,8 +162,13 @@ $('input').keypress(function(e) {
 
     }
 });*/
+ /*
+ button starts with id word and placeholder value
+ upon click
+ change id to letter and placeholder to enter letter
+ during reset change id and placeholder back
 
-
+*/
 /*
 Need to make the enter key work for the button
 need to make sure they can not guess the same letter as previoulsy guessedLetters
