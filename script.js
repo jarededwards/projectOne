@@ -4,15 +4,19 @@ $(document).ready(function(){
 
   var button = $('#word');
   var guess = $('#letter');
+  var reset = $('.reset');
   var input;
   var result;
-  var buttonType;
   var letter;
 
-  var found;
 
+//implement when all boxes are unhidden
 function clear(){
+  result ='';
   input ='';
+  letter='';
+  $('#wordInput').val('');
+  $('.flexItems').remove().children();
 }
 
 function hideShow() {
@@ -22,6 +26,12 @@ function hideShow() {
   $('#letter').toggleClass('hide');
 }
 
+//click listener for the reset button
+reset.click(function(e){
+  e.preventDefault();
+  clear();
+  hideShow();
+});
 
   // Event listener for click on submit word
   button.click(function(e) {
@@ -33,12 +43,16 @@ function hideShow() {
 
   });
 
-
   // Event listener for letter click
   guess.click(function(e) {
+    //prevent page reload
       e.preventDefault();
+      //get the letter value from input field
       letter = $('#letterInput').val();
-      console.log(letter +" LETTER Length: "+ input.length);
+      console.log(letter +" LETTER Length: "+ letter.length);
+      match();
+      //each time submit letter is pressed reset the text value field
+      $('#letterInput').val('');
 
   });
 
@@ -50,29 +64,19 @@ function hideShow() {
       $('main').append(
         "<div class='flexItems'><p id='"+i+"' class='hide'>"+result[i]+"</p></div>");
     }
+  }//end createBoard
 
-  }
+  // var re = /[a-z]/i;
 
-  // function search(found){
-  //   if(letter == result[found]){
-  //     console.log("match");
-  //     $(`#${found}`).toggleClass('hide');
-  //     // $('p').toggleClass('hide');
-  //
-  //   }
-  // }
-
-    /*/ var re = /[a-z]/i;
-
-    for(let i =0; i < input.length; i++){
-      console.log("user input "+letter);
+  function match(){
+    for(let i=0; i<result.length; i++){
       if(letter == result[i]){
-        console.log("ITS TRUE "+result[i]);
-        // $(`#${i}`).css('display', 'initial');
-        // $(`p #${i}`).removeAttr('display');
+        $(`#${i}`).toggleClass('hide');
       }
+
     }//end for
-  }//end search*/
+
+  }//end MATCH
 
 
 });//end document ready

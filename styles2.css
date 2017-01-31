@@ -20,17 +20,17 @@
 }
 
 .header {
-  background: tomato;
+  background: #FF0DFF;
 }
 
 .footer {
-  background: lightgreen;
+  background: #5DE88D;
 
 }
 
 .main {
   text-align: left;
-  background: deepskyblue;
+  background: #FFF4A0;
   height: 75%;
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@
 }
 
 .aside-1 {
-  background: gold;
+  background: #FF6081;
   width: 100px;
 }
 
