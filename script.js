@@ -6,25 +6,31 @@ $(document).ready(function(){
   var input;
   var result;
   var letter;
-  var tries = 2;
+  var tries = 5;
 
 
 
   //implement when all boxes are unhidden
   function clear(){
-    location.reload();
+    // location.reload();
+    tries =5;
+    $('.tries').html(tries);
     $('#wordInput').val('');
     $('.flexItems').remove().children();
     $('.guessedLetterBox').remove().children();
     hideShow();
   }
 
-  function validateInput(){
-    var re = /[A-Za-z]/;
-    if(re.test(letter)){
-      match();
-    }else{
+  function validateLetter(){
+    var re = /[a-z]/;
+    var reTest = re.test(letter);
+    console.log(reTest);
+    if(!reTest){
       alert('Sorry this game only likes letters!');
+    }else if(letter.length !== 1){
+      alert('You entered too many letters!');
+    }else{
+      match();
     }
   }
 
@@ -45,7 +51,7 @@ $(document).ready(function(){
   // Event listener for click on submit word
   button.click(function(e) {
       e.preventDefault();
-      input = $('#wordInput').val();
+      input = $('#wordInput').val().toUpperCase();
       createBoard();
       hideShow();
   });
@@ -57,8 +63,7 @@ $(document).ready(function(){
       //get the letter value from input field
       letter = $('#letterInput').val();
       //validate the input letter from the user
-      validateInput();
-
+      validateLetter();
       //each time submit letter is pressed reset the text value field
       $('#letterInput').val('');
   });
@@ -73,6 +78,7 @@ $(document).ready(function(){
 
   function match(){
     $('.tries').html(--tries);
+    letter =letter.toUpperCase();
     $('.guessedLetterBox').append("<div id='lettersGuessed'><p>"+letter+"</p></div>");
     if(tries ==0){
       alert('You ran out of guesses!');

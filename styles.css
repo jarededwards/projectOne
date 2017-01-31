@@ -12,35 +12,48 @@
 
   font-weight: bold;
   text-align: center;
+  margin: 0 auto;
+  border: 2px solid black;
+  height: 90vh;
+  width: 90vw;
 }
 
 .wrapper > * {
   padding: 10px;
   flex: 1 100%;
+  border-radius: 10px;
+
 }
+/*html {
+
+}*/
 
 .header {
-  background: #FF0DFF;
+  background: #3CC47C;
+  overflow: auto;
+  flex-grow: 1;
 }
 
 .footer {
-  background: #5DE88D;
+  background: #828081;
+  flex-grow: 1;
 
 }
 
 .main {
   text-align: left;
-  background: #FFF4A0;
-  height: 75%;
+  background: #E9C893;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
+  flex-grow: 3;
 }
 
 .aside-1 {
-  background: #FF6081;
+  background: #54856A;
   width: 100px;
+
 }
 
 .flexContainer{
@@ -52,7 +65,7 @@
 
 .flexItems{
   align-content: center;
-  border: 2px solid black;
+  border: 2px solid #3CC47C;
 }
 
 
@@ -69,8 +82,15 @@
 }
 
 body {
-  height: 80vh;
-  padding: 2em;
+  padding: 10px;
+  color:#FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  background: #BAF6FF;
+
+}
+
+p {
+  display: inline-block;
 }
 
 div {
@@ -92,6 +112,12 @@ input, button {
 
 .tries {
   font-size: 25px;
+}
+
+.flexBox {
+  display: flex;
+  flex-flow: row;
+  flex-grow: 3;
 }
 
 .guessedLetterBox {
