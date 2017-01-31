@@ -7,6 +7,7 @@ $(document).ready(function(){
   var result;
   var letter;
   var tries = 5;
+  var guessedLetters=[];
 
 
 
@@ -16,13 +17,13 @@ $(document).ready(function(){
     tries =5;
     $('.tries').html(tries);
     $('#wordInput').val('');
-    $('.flexItems').remove().children();
+    $('.flexItems .letterBoxes').remove().children();
     $('.guessedLetterBox').remove().children();
     hideShow();
   }
 
   function validateLetter(){
-    var re = /[a-z]/;
+    var re = /[A-Za-z]/;
     var reTest = re.test(letter);
     console.log(reTest);
     if(!reTest){
@@ -30,13 +31,15 @@ $(document).ready(function(){
     }else if(letter.length !== 1){
       alert('You entered too many letters!');
     }else{
-      match();
+          match();
     }
   }
 
   function hideShow() {
     $('#wordInput').toggleClass('hide');
     $('#word').toggleClass('hide');
+    // $('#wordInput').attr('id','letterInput')
+    // $('#wordInput').removeattr('id');
     $('#letterInput').toggleClass('hide');
     $('#letter').toggleClass('hide');
   }
@@ -45,8 +48,10 @@ $(document).ready(function(){
   reset.click(function(e){
     e.preventDefault();
     clear();
-    hideShow();
   });
+
+  //$('#button.word')
+  //$('#button.letter')
 
   // Event listener for click on submit word
   button.click(function(e) {
@@ -72,14 +77,15 @@ $(document).ready(function(){
     result= input.split('');
     $('.tries').html(tries);
     for(let i =0; i < result.length; i++){
-      $('main').append("<div class='flexItems'><p id='"+i+"' class='hide'>"+result[i]+"</p></div>");
+      $('main').append("<div class='flexItems letterBoxes'><p id='"+i+"' class='hide'>"+result[i]+"</p></div>");
     }
   }//end createBoard
 
   function match(){
     $('.tries').html(--tries);
     letter =letter.toUpperCase();
-    $('.guessedLetterBox').append("<div id='lettersGuessed'><p>"+letter+"</p></div>");
+    guessedLetters.push(letter.toUpperCase());
+    $('.guessedLetterBox').append("<div id='lettersGuessed' class='letterBoxes'><p>"+letter+"</p></div>");
     if(tries ==0){
       alert('You ran out of guesses!');
       clear();
@@ -115,6 +121,7 @@ then worry about hang man picture
 
 Remove the separate input field and make it the same as with updated text -- create a reset function
 
+*****
 
 
 
@@ -131,3 +138,9 @@ $('input').keypress(function(e) {
 
     }
 });*/
+
+
+/*
+Need to make the enter key work for the button
+need to make sure they can not guess the same letter as previoulsy guessedLetters
+*/
