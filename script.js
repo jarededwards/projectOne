@@ -143,4 +143,5 @@ $('input').keypress(function(e) {
 /*
 Need to make the enter key work for the button
 need to make sure they can not guess the same letter as previoulsy guessedLetters
+Need to check that all boxes are turned over...
 */
