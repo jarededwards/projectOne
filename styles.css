@@ -43,11 +43,6 @@
   width: 100px;
 }
 
-/*.aside-2 {
-  background: hotpink;
-    width: 100px;
-}*/
-
 .flexContainer{
   display: flex;
   justify-content: center;
@@ -84,8 +79,25 @@ div {
   margin: 15px;
   text-align: center;
   font-size: 20px;
+
+}
+
+input, button {
+  padding: 10px;
 }
 
 .hide{
   display: none;
+}
+
+.tries {
+  font-size: 25px;
+}
+
+.guessedLetterBox {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 5px;
 }

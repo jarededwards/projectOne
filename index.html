@@ -9,7 +9,7 @@
   </head>
   <body class="wrapper">
     <header class="header">
-      <h1>Welcome to Hangman!</h1>
+      <h1>Hangman!</h1>
       <h2>Here you can play a good ol game of Hangman with a friend. One enteres the word and the other enters letters one at a time to see if they can guess the word! </h2>
     </header>
     <main class="main">
@@ -21,9 +21,14 @@
       <br />
       <input id='letterInput' class='hide' placeholder="Enter your letter"/>
       <button  id='letter' class='hide' type='button'>Submit Letter!</button>
+        <h1>Number of Guesses Remaining:</h1>
+        <h2 class ='tries'></h2>
+
     </aside>
-    <!-- <aside class="aside aside-2">Aside 2</aside> -->
     <footer class="footer">
+      <div class='guessedLetterBox'>
+
+      </div>
       <button class='reset' type='button'>Reset Board</button>
     </footer>
   </body>

@@ -1,46 +1,53 @@
 $(document).ready(function(){
 
-
-
   var button = $('#word');
   var guess = $('#letter');
   var reset = $('.reset');
   var input;
   var result;
   var letter;
+  var tries = 2;
 
 
-//implement when all boxes are unhidden
-function clear(){
-  result ='';
-  input ='';
-  letter='';
-  $('#wordInput').val('');
-  $('.flexItems').remove().children();
-}
 
-function hideShow() {
-  $('#wordInput').toggleClass('hide');
-  $('#word').toggleClass('hide');
-  $('#letterInput').toggleClass('hide');
-  $('#letter').toggleClass('hide');
-}
+  //implement when all boxes are unhidden
+  function clear(){
+    location.reload();
+    $('#wordInput').val('');
+    $('.flexItems').remove().children();
+    $('.guessedLetterBox').remove().children();
+    hideShow();
+  }
 
-//click listener for the reset button
-reset.click(function(e){
-  e.preventDefault();
-  clear();
-  hideShow();
-});
+  function validateInput(){
+    var re = /[A-Za-z]/;
+    if(re.test(letter)){
+      match();
+    }else{
+      alert('Sorry this game only likes letters!');
+    }
+  }
+
+  function hideShow() {
+    $('#wordInput').toggleClass('hide');
+    $('#word').toggleClass('hide');
+    $('#letterInput').toggleClass('hide');
+    $('#letter').toggleClass('hide');
+  }
+
+  //click listener for the reset button
+  reset.click(function(e){
+    e.preventDefault();
+    clear();
+    hideShow();
+  });
 
   // Event listener for click on submit word
   button.click(function(e) {
       e.preventDefault();
       input = $('#wordInput').val();
-      console.log(input +" SUBMIT Length: "+ input.length);
-      createBoard(input);
+      createBoard();
       hideShow();
-
   });
 
   // Event listener for letter click
@@ -49,33 +56,33 @@ reset.click(function(e){
       e.preventDefault();
       //get the letter value from input field
       letter = $('#letterInput').val();
-      console.log(letter +" LETTER Length: "+ letter.length);
-      match();
+      //validate the input letter from the user
+      validateInput();
+
       //each time submit letter is pressed reset the text value field
       $('#letterInput').val('');
-
   });
 
-
-  function createBoard(input){
+  function createBoard(){
     result= input.split('');
-    console.log(result)
+    $('.tries').html(tries);
     for(let i =0; i < result.length; i++){
-      $('main').append(
-        "<div class='flexItems'><p id='"+i+"' class='hide'>"+result[i]+"</p></div>");
+      $('main').append("<div class='flexItems'><p id='"+i+"' class='hide'>"+result[i]+"</p></div>");
     }
   }//end createBoard
 
-  // var re = /[a-z]/i;
-
   function match(){
+    $('.tries').html(--tries);
+    $('.guessedLetterBox').append("<div id='lettersGuessed'><p>"+letter+"</p></div>");
+    if(tries ==0){
+      alert('You ran out of guesses!');
+      clear();
+    }
     for(let i=0; i<result.length; i++){
       if(letter == result[i]){
         $(`#${i}`).toggleClass('hide');
       }
-
-    }//end for
-
+    }
   }//end MATCH
 
 
