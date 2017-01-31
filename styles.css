@@ -1,4 +1,4 @@
-#submission{
+#word{
   color:red;
 }
 
@@ -8,7 +8,6 @@ div {
   width: 100px;
   margin: 15px;
   text-align: center;
-
 }
 
 
@@ -41,5 +40,11 @@ button, input {
   align-content: center;
 }
 
-.flex-items{
+.flexItems{
+  align-content: center;
+  display:hidden;
 }
+
+/*p {
+  display:none;
+}*/

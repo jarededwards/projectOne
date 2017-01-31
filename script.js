@@ -1,36 +1,78 @@
 $(document).ready(function(){
 
-  //var test = prompt('What word would you like to have your partner guess?');
-  var button = $('button');
+
+
+  var button = $('#word');
+  var guess = $('#letter');
   var input;
+  var result;
+  var buttonType;
+  var letter;
 
-  // Event setup using a convenience method
+  var found;
+
+function clear(){
+  input ='';
+}
+
+function hideShow() {
+  $('#wordInput').toggleClass('hide');
+  $('#word').toggleClass('hide');
+  $('#letterInput').toggleClass('hide');
+  $('#letter').toggleClass('hide');
+}
+
+
+  // Event listener for click on submit word
   button.click(function(e) {
-      // console.log( "You clicked the button!");
       e.preventDefault();
-      input = $('input').val();
-
-      console.log(input +" Length: "+ input.length);
-      createBoard();
+      input = $('#wordInput').val();
+      console.log(input +" SUBMIT Length: "+ input.length);
+      createBoard(input);
+      hideShow();
 
   });
-  //event  to listen for with the enter
-  $('input').keypress(function(e) {
-      if (e.which == 13) {
-          e.preventDefault();
-          $('input').click();
-          input = $('input').val();
-          console.log(input +" Length: "+ input.length);
-          createBoard();
-      }
+
+
+  // Event listener for letter click
+  guess.click(function(e) {
+      e.preventDefault();
+      letter = $('#letterInput').val();
+      console.log(letter +" LETTER Length: "+ input.length);
+
   });
 
-  function createBoard(){
-    for(let i =0; i < input.length; i++){
-      $('main').append('<div></div>');
+
+  function createBoard(input){
+    result= input.split('');
+    console.log(result)
+    for(let i =0; i < result.length; i++){
+      $('main').append(
+        "<div class='flexItems'><p id='"+i+"' class='hide'>"+result[i]+"</p></div>");
     }
+
   }
 
+  // function search(found){
+  //   if(letter == result[found]){
+  //     console.log("match");
+  //     $(`#${found}`).toggleClass('hide');
+  //     // $('p').toggleClass('hide');
+  //
+  //   }
+  // }
+
+    /*/ var re = /[a-z]/i;
+
+    for(let i =0; i < input.length; i++){
+      console.log("user input "+letter);
+      if(letter == result[i]){
+        console.log("ITS TRUE "+result[i]);
+        // $(`#${i}`).css('display', 'initial');
+        // $(`p #${i}`).removeAttr('display');
+      }
+    }//end for
+  }//end search*/
 
 
 });//end document ready
@@ -48,11 +90,27 @@ create a flex box for divs
 create a single line of code that creates a div (with a border and size x X x)
 create a for loop that will generate as many divs in a flexbox as in word.length
 allow user to guess while less than word.length
+(*********)
+create a function to start the count down. call it each time that the submit letter button is clicked
 
 create display box with remaining guesses
 then worry about hang man picture
+
+Remove the separate input field and make it the same as with updated text -- create a reset function
 
 
 
 
 */
+
+/*/event  to listen for with the enter
+$('input').keypress(function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        $('input').click();
+        input = $('input').val();
+        console.log(input +" Length: "+ input.length);
+        createBoard(input);
+
+    }
+});*/
