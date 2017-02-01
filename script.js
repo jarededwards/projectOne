@@ -104,10 +104,12 @@ $(document).ready(function(){
       if(letter == result[i]){
         $(`#${i}`).toggleClass('hide');
         // $(`#${i}`).removeClass('hide');
-        userGuess++;
+
         // console.log(userGuess);
         // congrats();
 
+      }else{
+        userGuess++;
       }
       if(userGuess == wordLength){
         alert('Congrats! You guessed it, '+ input);
