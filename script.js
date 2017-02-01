@@ -6,7 +6,7 @@ $(document).ready(function(){
   var input;
   var result;
   var letter;
-  var tries = 7;
+  var tries = 10;
   var guessedLetters=[];
   var wordLength;
   var userGuess =0;
@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   //implement when all boxes are unhidden
   function clear(){
-    tries =7;
+    tries =10;
     userGuess=0;
     $('.tries').html(tries);
     $('#wordInput').val('');
@@ -150,5 +150,6 @@ Remove the separate input field and make it the same as with updated text -- cre
 /*
 Need to make the enter key work for the button
 need to make sure they can not guess the same letter as previoulsy guessedLetters
+do not take away one of the tries if the user guesses correctly...
 Need to check that all boxes are turned over...
 */
