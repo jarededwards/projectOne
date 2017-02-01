@@ -10,6 +10,7 @@ $(document).ready(function(){
   var guessedLetters=[];
   var wordLength;
   var userGuess =0;
+  var foo =0;
 
   //implement when all boxes are unhidden
   function clear(){
@@ -24,7 +25,7 @@ $(document).ready(function(){
   function validateLetter(){
     var re = /[A-Za-z]/;
     var reTest = re.test(letter);
-    console.log(reTest);
+    // console.log(reTest);
     if(!reTest){
       alert('Sorry this game only likes letters!');
     }else if(letter.length !== 1){
@@ -57,8 +58,6 @@ $(document).ready(function(){
       input = $('#wordInput').val().toUpperCase();
       // validateWord();
       wordLength = input.length;
-      console.log("word length ");
-      console.log(wordLength);
       createBoard();
       hideShow();
   });
@@ -100,11 +99,36 @@ $(document).ready(function(){
       clear();
     }
     for(let i=0; i<result.length; i++){
-      if(letter == result[i]){
+      if(userGuess < wordLength && letter == result[i]){
         $(`#${i}`).toggleClass('hide');
+        // $(`#${i}`).removeClass('hide');
+        userGuess++;
+        // congrats();
+
       }
     }
+
   }//end MATCH
+
+
+  // function congrats(){
+  //
+  //   for(let i =0; i < wordLength; i++){
+  //     var flag = $(`#${i}`).hasClass('hide');
+  //     console.log("word length "+wordLength);
+  //     // console.log(wordLength);
+  //     console.log('flag ' + flag);
+  //     // console.log(flag);
+  //     console.log('foo '+ foo);
+  //     // console.log(foo);
+  //     if(!flag){
+  //       foo++;
+  //     }
+  //     if(foo == wordLength){
+  //       alert('you win')
+  //     }
+  //   }//for loop
+  // }
 
 });//end document ready
 

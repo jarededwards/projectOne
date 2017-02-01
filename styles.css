@@ -25,6 +25,7 @@
 .header {
   background: #3CC47C;
   flex-grow: 1;
+  padding: 10px;
 }
 
 .flexBox {
@@ -98,6 +99,10 @@ body {
   color:#FFFFFF;
   font-family: 'Montserrat', sans-serif;
   background: #BAF6FF;
+}
+
+h6 {
+  color: red;
 }
 
 @media all and (min-width: 600px) {
