@@ -15,6 +15,7 @@ $(document).ready(function(){
   //implement when all boxes are unhidden
   function clear(){
     tries =7;
+    userGuess=0;
     $('.tries').html(tries);
     $('#wordInput').val('');
     $('.flexItems .letterBoxes').remove().children();
@@ -61,6 +62,7 @@ $(document).ready(function(){
       createBoard();
       hideShow();
   });
+
 
   // Event listener for letter click
   guess.click(function(e) {
@@ -140,17 +142,7 @@ then worry about hang man picture
 Remove the separate input field and make it the same as with updated text -- create a reset function
 */
 
-/*/event  to listen for with the enter
-$('input').keypress(function(e) {
-    if (e.which == 13) {
-        e.preventDefault();
-        $('input').click();
-        input = $('input').val();
-        console.log(input +" Length: "+ input.length);
-        createBoard(input);
 
-    }
-});*/
  /*
  button starts with id word and placeholder value
  upon click
