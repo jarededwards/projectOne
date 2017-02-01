@@ -99,36 +99,22 @@ $(document).ready(function(){
       clear();
     }
     for(let i=0; i<result.length; i++){
-      if(userGuess < wordLength && letter == result[i]){
+      if(letter == result[i]){
         $(`#${i}`).toggleClass('hide');
         // $(`#${i}`).removeClass('hide');
         userGuess++;
+        // console.log(userGuess);
         // congrats();
 
+      }
+      if(userGuess == wordLength){
+        alert('Congrats! You guessed it, '+ input);
+        clear();
       }
     }
 
   }//end MATCH
 
-
-  // function congrats(){
-  //
-  //   for(let i =0; i < wordLength; i++){
-  //     var flag = $(`#${i}`).hasClass('hide');
-  //     console.log("word length "+wordLength);
-  //     // console.log(wordLength);
-  //     console.log('flag ' + flag);
-  //     // console.log(flag);
-  //     console.log('foo '+ foo);
-  //     // console.log(foo);
-  //     if(!flag){
-  //       foo++;
-  //     }
-  //     if(foo == wordLength){
-  //       alert('you win')
-  //     }
-  //   }//for loop
-  // }
 
 });//end document ready
 
