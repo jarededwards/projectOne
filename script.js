@@ -6,16 +6,14 @@ $(document).ready(function(){
   var input;
   var result;
   var letter;
-  var tries = 5;
+  var tries = 7;
   var guessedLetters=[];
-  var newButton = $('#button');
-
-
+  var wordLength;
+  var userGuess =0;
 
   //implement when all boxes are unhidden
   function clear(){
-    // location.reload();
-    tries =5;
+    tries =7;
     $('.tries').html(tries);
     $('#wordInput').val('');
     $('.flexItems .letterBoxes').remove().children();
@@ -32,45 +30,17 @@ $(document).ready(function(){
     }else if(letter.length !== 1){
       alert('You entered too many letters!');
     }else{
-          match();
+        match();
     }
   }//end validateLetter
-
-  // function validateWord(){
-  //   var reSpace = /[ ]/;
-  //   var reLetters = /[A-Za-z]/;
-  //   var reTestSpace = reSpace.test(input);
-  //   var reTestLetters = reLetters.test(input);
-  //   console.log('this is space');
-  //   console.log(reTestSpace);
-  //   console.log('this is letters');
-  //   console.log(reTestLetters);
-  //   if(reTestSpace && reTestLetters){
-  //     alert('not allowed to enter more than one word');
-  //     clear();
-  //   }
-  //
-  // }
 
   function hideShow() {
     $('#wordInput').toggleClass('hide');
     $('#word').toggleClass('hide');
-    // $('#wordInput').attr('id','letterInput')
-    // $('#wordInput').removeattr('id');
     $('#letterInput').toggleClass('hide');
     $('#letter').toggleClass('hide');
   }
 
-//listen for clik on button
-  newButton.click(function(e){
-    e.preventDefault();
-    input = $('#button.word').val().toUpperCase();
-    //validateWord
-    $('#button.word').attr('id','button.letter')
-
-
-
-  });
 
   //click listener for the reset button
   reset.click(function(e){
@@ -86,6 +56,9 @@ $(document).ready(function(){
       e.preventDefault();
       input = $('#wordInput').val().toUpperCase();
       // validateWord();
+      wordLength = input.length;
+      console.log("word length ");
+      console.log(wordLength);
       createBoard();
       hideShow();
   });
@@ -102,6 +75,13 @@ $(document).ready(function(){
       $('#letterInput').val('');
   });
 
+  function alreadyGuessed(){
+    for(let i=0; i<alreadyGuessed.length; i++){
+      var flag = (letter == alreadyGuessed[i]) ? true : false;
+    }
+    return flag;
+  }// end alreadyGuessed
+
   function createBoard(){
     result= input.split('');
     $('.tries').html(tries);
@@ -113,7 +93,7 @@ $(document).ready(function(){
   function match(){
     $('.tries').html(--tries);
     letter =letter.toUpperCase();
-    guessedLetters.push(letter.toUpperCase());
+    guessedLetters.push(letter);
     $('.guessedLetterBox').append("<div id='lettersGuessed' class='letterBoxes'><p>"+letter+"</p></div>");
     if(tries ==0){
       alert('You ran out of guesses!');
@@ -125,7 +105,6 @@ $(document).ready(function(){
       }
     }
   }//end MATCH
-
 
 });//end document ready
 
