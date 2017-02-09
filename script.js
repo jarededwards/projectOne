@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+// ND: Lots of global variables here. Would really try to limit usage, especially if only one function is using it.
+// Also, doesn't seem like you're using the last one.
   var button = $('#word');
   var guess = $('#letter');
   var reset = $('.reset');
@@ -14,6 +16,7 @@ $(document).ready(function(){
 
   //implement when all boxes are unhidden
   function clear(){
+    // ND: so tries here is a global variable. You essentially have it twice since it's also in the global space.
     tries =10;
     userGuess=0;
     $('.tries').html(tries);
@@ -26,6 +29,7 @@ $(document).ready(function(){
   function validateLetter(){
     var re = /[A-Za-z]/;
     var reTest = re.test(letter);
+    // ND: Wouldn't leave code your not using in here
     // console.log(reTest);
     if(!reTest){
       alert('Sorry this game only likes letters!');
@@ -61,7 +65,7 @@ $(document).ready(function(){
       wordLength = input.length;
       createBoard();
       hideShow();
-  });
+    });
 
 
   // Event listener for letter click
@@ -77,6 +81,8 @@ $(document).ready(function(){
   });
 
   function alreadyGuessed(){
+    // ND: So where you want this to go is to make sure a letter can't be picked more than once, correct?
+    // ND: There's no alreadyGuessed array. What're you trying to loop through?
     for(let i=0; i<alreadyGuessed.length; i++){
       var flag = (letter == alreadyGuessed[i]) ? true : false;
     }
@@ -92,6 +98,7 @@ $(document).ready(function(){
   }//end createBoard
 
   function match(){
+    //
     $('.tries').html(--tries);
     letter =letter.toUpperCase();
     guessedLetters.push(letter);
@@ -119,6 +126,7 @@ $(document).ready(function(){
 
 
 
+// ND: Nice Pseudocode!
 /*
 Pseudocode
 Create an input field that will allow user to input a word
